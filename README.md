@@ -6,7 +6,7 @@ Lightweight and easy to use neural network library for small projects, create a 
 
 <h3>
 
-[Homepage](https://github.com/usedToBeTomas/pile-of-feather) | [Documentation](/docs) | [Examples](/examples)
+[Homepage](https://github.com/usedToBeTomas/pile-of-feather) | [Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation) | [Examples](/examples)
 
 </h3>
 
