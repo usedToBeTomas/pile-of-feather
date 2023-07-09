@@ -35,7 +35,7 @@ input = np.vstack((ones, zeros)) #Merge the ones and zeros
 #Generate expected output, first 500 images should output 1, the other 500 0
 output = np.concatenate((np.ones(500), np.zeros(500))) #Merge the ones and zeros
 
-#Train the neural network using backpropagation, it automatically saves the weights and biases at the end of the 100 epochs
+#Train the neural network using backpropagation
 model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 ```
 The second code snippet is testing the neural network on some examples
