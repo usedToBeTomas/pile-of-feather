@@ -38,14 +38,11 @@ def runModelForTraining(model_weights, model_biases, layers, layer_history):
 
 def backprop(data_input, data_output, weights, biases, layers, learning_rate):
     layer_number = len(layers)
-    #feedforward
     layers_output_space = np.empty(layer_number, dtype=object)
     layers_output_space[0] = data_input
     layers_output_space = runModelForTraining(weights, biases, layers, layers_output_space)
-    #backprop
     weights_mod = np.zeros_like(weights)
     biases_mod = np.zeros_like(biases)
-    #Output layer
     output_error = np.subtract(layers_output_space[-1], data_output)
     match layers[-1][1]:
         case "sigmoid": output_delta = output_error * layers_output_space[-1] * (1 - layers_output_space[-1])
@@ -53,7 +50,6 @@ def backprop(data_input, data_output, weights, biases, layers, learning_rate):
         case "leakyRelu": output_delta = output_error * np.where(layers_output_space[-1] > 0, 1, 0.1)
     weights_mod[-1] = np.multiply(np.outer(output_delta, layers_output_space[-2]), learning_rate)
     biases_mod[-1] = np.multiply(output_delta, learning_rate)
-    #Hidden layers
     for layer in range(layer_number - 2, 0, -1):
         match layers[layer][1]:
             case "sigmoid": delta = np.dot(weights[layer + 1].T, output_delta) * layers_output_space[layer] * (1 - layers_output_space[layer])
