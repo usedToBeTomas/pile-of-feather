@@ -17,9 +17,13 @@ Lightweight and easy to use neural network library for small projects, create a 
 # Documentation :book:
 The library is structured in 2 files, pof.py (pile of feather) is the library for creating and training neural networks and pod.py (pile of data) is the library for importing your own data to create a training dataset for the neural network.
 ## pof.py - neural network module
+Install module
+```cmd
+pip install pileoffeather
+```
 Import module
 ```python
-import pof
+from pileoffeather import pof
 ```
 Define neural network model, the available activation functions are "sigmoid","relu","leakyRelu"
 ```python
@@ -45,7 +49,7 @@ output = model.run(input)
 ## pod.py - data load module
 Import module
 ```python
-import pod
+from pileoffeather import pod
 ```
 Load images from a folder
 ```python
