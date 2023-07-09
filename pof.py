@@ -86,7 +86,6 @@ class neuralNetwork:
         return runModel(self.weights, self.biases, self.layers, input)
 
     def train(self, data_input, data_output, **options):
-        print("_"*80 + "\nTRAINING " + self.name + "\nmodel = " + str(self.layers) + "\nrate = " + str(options.get("rate")))
         batch_size = options.get("batch_size")
         epoch_number = options.get("epoch_number")
         learning_rate = options.get("rate")
@@ -108,7 +107,7 @@ class neuralNetwork:
                     stopper = True
             print("Epoch " + str(epoch) + "        Loss = " + str(t_loss/t_counter), end='\r')
         self.save()
-        print("\nTraining finished, weights saved!\n" + "_"*80)
+        print("\nTraining finished, weights and biases saved.\n")
 
     def applyBatch(self, batch_result):
         self.weights -= np.mean([mod[0] for mod in batch_result], axis=0)
