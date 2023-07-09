@@ -19,7 +19,7 @@ import pof
 ```
 Define neural network model, the available activation functions are "sigmoid","relu","leakyRelu"
 ```python
-model = pof.neuralNetwork(layers = [[400,""],[100,"relu"],[50,"relu"],[10,"relu"][1,"sigmoid"]], name = "test1")
+model = pof.neuralNetwork(layers = [[400,""],[50,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
 ```
 
 Load an exsisting model
