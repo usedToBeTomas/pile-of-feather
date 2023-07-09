@@ -17,9 +17,9 @@ Import module
 ```python
 import pof
 ```
-Define neural network model
+Define neural network model, the available activation functions are "sigmoid","relu","leakyRelu"
 ```python
-model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
+model = pof.neuralNetwork(layers = [[400,""],[200,"relu"],[100,"relu"],[50,"relu"],[10,"relu"][1,"sigmoid"]], name = "test1")
 ```
 
 Load an exsisting model
@@ -34,7 +34,7 @@ model.save()
 
 Train
 ```python
-model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.6)
+model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
 
 Use the neural network
