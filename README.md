@@ -12,3 +12,36 @@ Lightweight and easy to use neural network library for small projects, create a 
 
 </div>
 
+# Documentation
+Import module
+```python
+import pof
+```
+Define neural network model
+```python
+model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
+```
+
+Load an exsisting model
+```python
+model = pof.neuralNetwork(load = "test1")
+```
+
+Save the model
+```python
+model.save()
+```
+
+Train
+```python
+model.train(input, expected_output, batch_size = 16, epoch_number = 100, rate = 0.6)
+```
+
+Use the neural network
+```python
+model.run(input)
+```
+
+
+
+
