@@ -34,12 +34,12 @@ model.save()
 
 Train
 ```python
-model.train(input, expected_output, batch_size = 16, epoch_number = 100, rate = 0.6)
+model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.6)
 ```
 
 Use the neural network
 ```python
-model.run(input)
+output = model.run(input)
 ```
 
 
