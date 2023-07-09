@@ -6,7 +6,7 @@ Lightweight and easy to use neural network library for small projects, create a 
 
 <h3>
 
-[Homepage](https://github.com/usedToBeTomas/pile-of-feather) | [Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation) | [Examples](/examples)
+[Homepage](https://github.com/usedToBeTomas/pile-of-feather) | [Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation) | [Examples](https://github.com/usedToBeTomas/pile-of-feather#examples)
 
 </h3>
 
@@ -32,7 +32,7 @@ Save the model
 model.save()
 ```
 
-Train
+Train using backpropagation
 ```python
 model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
@@ -42,6 +42,6 @@ Use the neural network
 output = model.run(input)
 ```
 
-
-
+# Examples
+Working in progress...
 
