@@ -2,11 +2,11 @@
 <h1>POF - pile of feather</h1>
 <img src="https://github.com/usedToBeTomas/pile-of-feather/blob/main/images/pof.png" width="400" height="400" />
 
-Lightweight and easy to use neural network library for small projects, create a neural network in minutes. A fun project.
+This library is not an alternative to big ml library like pytorch or tensorflow, it lacks features and optimization, such as gpu support. The goal is to create a lightweight library of about 100 lines of code that is easy to use and quick to implement for creating small projects or experiments.
 
 <h3>
 
-[Homepage](https://github.com/usedToBeTomas/pile-of-feather) | [Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation-book) | [Examples](https://github.com/usedToBeTomas/pile-of-feather#examples-rocket)
+[Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation) | [Examples](https://github.com/usedToBeTomas/pile-of-feather#examples)
 
 </h3>
 
@@ -18,7 +18,7 @@ Install module
 ```cmd
 pip install pileoffeather
 ```
-# Examples :rocket:
+# Examples
 Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
 ```python
 from pileoffeather import pof, pod
@@ -56,7 +56,7 @@ print(round(output[0],3))
 
 ---
 
-# Documentation :book:
+# Documentation
 The library is structured in 2 files, pof.py (pile of feather) is the library for creating and training neural networks and pod.py (pile of data) is the library for importing your own data to create a training dataset for the neural network.
 ## pof.py - neural network module
 Install module
