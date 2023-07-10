@@ -27,13 +27,13 @@ import numpy as np
 #Define neural network model
 model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
 
-#Load the images from their respective folders, 500 ones images and 500 zeros images
-ones = pod.load(data_type = "image", folder = "ones", resize = (20,20))
-zeros = pod.load(data_type = "image", folder = "zeros", resize = (20,20))
-input = np.vstack((ones, zeros)) #Merge the ones and zeros
+#Load the images for the dataset, 500 ones images and 500 zeros images
+ones = pod.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20))
+zeros = pod.load(data_type = "image", color = "grayscale", folder = "zeros", resize = (20,20))
+input = np.vstack((ones, zeros))
 
 #Generate expected output, first 500 images should output 1, the other 500 0
-output = np.concatenate((np.ones(500), np.zeros(500))) #Merge the ones and zeros
+output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network using backpropagation
 model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
@@ -47,11 +47,10 @@ import numpy as np
 model = pof.neuralNetwork(load = "test1")
 
 #Run model
-output = model.run(pod.loadImage("example_image_one.png", (20,20)))
+output = model.run(pod.loadImage("example_image_one.png", (20,20), "grayscale"))
 
 #Print result
 print(round(output[0],3))
-
 ```
 
 ---
@@ -93,8 +92,15 @@ Import module
 ```python
 from pileoffeather import pod
 ```
-Load images from a folder
+Load images from a folder, color can be set to grayscale or rgb
 ```python
-ones = pod.load(data_type = "image", folder = "folder_name_containing_all_images", resize = (20,20))
+dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
 ```
-
+Load a single image to feed the neural network loadImage(name, resize, color)
+```python
+input_vector = pod.loadImage("example_image.png", (20,20), "grayscale")
+```
+Convert neural network output to image and save, saveImage(neural_network_output, image_path, resize, color)
+```python
+pod.saveImage(neural_network_output, "image_path_and_name", (20,20), "grayscale")
+```
