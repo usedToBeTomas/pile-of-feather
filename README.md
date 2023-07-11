@@ -56,7 +56,7 @@ print(round(output[0],3))
 ---
 
 # Documentation
-The library is structured in 2 files, pof.py (pile of feather) is the library for creating and training neural networks and pod.py (pile of data) is the library for importing your own data to create a training dataset for the neural network.
+The library is structured in 2 files, pof.py (pile of feather) is used to create and train neural networks, pod.py (pile of data) is used import your own data to generate a training dataset.
 ## pof.py - neural network module
 Install module
 ```cmd
@@ -80,7 +80,7 @@ model.save()
 ```
 Train using backpropagation
 ```python
-model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
+model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
 Use the neural network
 ```python
