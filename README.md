@@ -41,7 +41,6 @@ model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 The second code snippet is testing the neural network on some examples
 ```python
 from pileoffeather import pof, pod
-import numpy as np
 
 #Define neural network model
 model = pof.neuralNetwork(load = "test1")
