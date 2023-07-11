@@ -93,7 +93,7 @@ from pileoffeather import pod
 ```
 Load images from a folder, color can be set to grayscale or rgb
 ```python
-dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
+dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name", resize = (20,20))
 ```
 Load a single image to feed the neural network loadImage(name, resize, color)
 ```python
