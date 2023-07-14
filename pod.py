@@ -51,6 +51,6 @@ def load(**options):
             if options.get("one_hot") != None:
                 Q =  []
                 for i in range(len(data)):
-                    Q.append(decimal_to_array(data[i], int(options.get("one-hot"))))
+                    Q.append(decimal_to_array(data[i], int(options.get("one_hot"))))
                 data = np.vstack(Q)
             return data
