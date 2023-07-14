@@ -41,7 +41,6 @@ train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 The second code snippet is testing the neural network on some examples
 ```python
 from pileoffeather import pof, pod
-import numpy as np
 
 #Define neural network model
 model = pof.neuralNetwork(load = "test1")
@@ -71,7 +70,7 @@ pof.train(model, input_dataset, output_dataset, batch_size = 12, epoch_number = 
 ---
 
 # Documentation
-The library is structured in 2 files, pof.py (pile of feather) is the library for creating and training neural networks and pod.py (pile of data) is the library for importing your own data to create a training dataset for the neural network.
+The library is structured in 2 files, pof.py (pile of feather) is used to create and train neural networks, pod.py (pile of data) is used import your own data to generate a training dataset.
 ## pof.py - neural network module
 Install module
 ```cmd
@@ -91,7 +90,7 @@ model.save()
 ```
 Load an exsisting model
 ```python
-model = pof.neuralNetwork(load = "test1")
+model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
 Use the neural network
 ```python
@@ -111,7 +110,7 @@ Import module
 ```python
 from pileoffeather import pod
 ```
-Load images from a folder, color can be set to grayscale or rgb
+Load dataset
 ```python
 dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
 #Load training input data of mnist, normalize input from 0 to 1 using divide = 255
