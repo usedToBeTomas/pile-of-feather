@@ -90,7 +90,7 @@ model.save()
 ```
 Load an exsisting model
 ```python
-model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.03)
+model = pof.neuralNetwork(load = "test1")
 ```
 Use the neural network
 ```python
