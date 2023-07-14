@@ -19,7 +19,7 @@ Install module
 pip install pileoffeather
 ```
 # Examples
-Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
+examples/simple_image_classifier - Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
 ```python
 from pileoffeather import pof, pod
 import numpy as np
@@ -36,7 +36,7 @@ input = pod.merge(ones, zeros)
 output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network using backpropagation
-train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
+pof.train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 ```
 The second code snippet is testing the neural network on some examples
 ```python
@@ -52,7 +52,10 @@ output = model.run(input)
 #Print result
 print(round(output[0],3))
 ```
-Training script for the mnist dataset, 2 epochs -> 20~ seconds on 12600k -> 96%+ accuracy on 10k-test dataset
+
+---
+
+examples/mnist - Training script for the mnist dataset, 2 epochs -> 20~ seconds on 12600k -> 96%+ accuracy on 10k-test dataset
 ```python
 from pileoffeather import pof, pod
 
@@ -110,14 +113,17 @@ Import module
 ```python
 from pileoffeather import pod
 ```
-Load dataset
+Load dataset of images from local folder
 ```python
 dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
+```
+Load dataset from gz file like mnist
+```python
 #Load training input data of mnist, normalize input from 0 to 1 using divide = 255
 dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
 #Load training output data of mnist, use one_hot encoding to convert a decimal number to an array (pass total number of classes as parameter)
 #4 -> [0,0,0,0,1,0,0,0,0,0] 0 -> [1,0,0,0,0,0,0,0,0,0]
-output_dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
+dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 ```
 Load a single image to feed the neural network loadImage(name, resize, color)
 ```python
