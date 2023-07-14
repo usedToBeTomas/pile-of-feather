@@ -30,13 +30,13 @@ model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"si
 #Load the images for the dataset, 500 ones images and 500 zeros images
 ones = pod.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20))
 zeros = pod.load(data_type = "image", color = "grayscale", folder = "zeros", resize = (20,20))
-input = np.vstack((ones, zeros))
+input = pod.merge(ones, zeros)
 
 #Generate expected output, first 500 images should output 1, the other 500 0
 output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network using backpropagation
-model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
+train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 ```
 The second code snippet is testing the neural network on some examples
 ```python
@@ -47,10 +47,25 @@ import numpy as np
 model = pof.neuralNetwork(load = "test1")
 
 #Run model
-output = model.run(pod.loadImage("example_image_one.png", (20,20), "grayscale"))
+input = pod.loadImage("example_image_one.png", (20,20), "grayscale")
+output = model.run(input)
 
 #Print result
 print(round(output[0],3))
+```
+Training script for the mnist dataset, 2 epochs -> 20~ seconds on 12600k -> 96%+ accuracy on 10k-test dataset
+```python
+from pileoffeather import pof, pod
+
+#Define neural network model
+model = pof.neuralNetwork(layers = [[784,""],[128,"relu"],[10,"sigmoid"]], name = "mnist")
+
+#Upload mnist dataset
+input_dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
+output_dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
+
+#Train the neural network using backpropagation
+pof.train(model, input_dataset, output_dataset, batch_size = 12, epoch_number = 2, rate = 1)
 ```
 
 ---
@@ -70,21 +85,25 @@ Define neural network model, the available activation functions are "sigmoid","r
 ```python
 model = pof.neuralNetwork(layers = [[400,""],[50,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
 ```
-Load an exsisting model
-```python
-model = pof.neuralNetwork(load = "test1")
-```
 Save the model
 ```python
 model.save()
 ```
-Train using backpropagation
+Load an exsisting model
 ```python
-model.train(input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
+model = pof.neuralNetwork(load = "test1")
 ```
 Use the neural network
 ```python
 output = model.run(input)
+```
+Compute backpropagation for a single batch, model.computeBatch(batch_input, batch_output, batch_size, learning_rate)
+```python
+model.computeBatch(batch_input, batch_output, 16, 0.3)
+```
+Method that contains model.computeBatch() in a loop so that it iterates over all the dataset for n epochs
+```python
+pof.train(model, input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
 
 ## pod.py - data load module
@@ -95,6 +114,11 @@ from pileoffeather import pod
 Load images from a folder, color can be set to grayscale or rgb
 ```python
 dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
+#Load training input data of mnist, normalize input from 0 to 1 using divide = 255
+dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
+#Load training output data of mnist, use one_hot encoding to convert a decimal number to an array (pass total number of classes as parameter)
+#4 -> [0,0,0,0,1,0,0,0,0,0] 0 -> [1,0,0,0,0,0,0,0,0,0]
+output_dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 ```
 Load a single image to feed the neural network loadImage(name, resize, color)
 ```python
