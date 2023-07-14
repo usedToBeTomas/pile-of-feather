@@ -13,4 +13,4 @@ input = pod.merge(ones, zeros)
 output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network using backpropagation
-model.train(input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
+pof.train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
