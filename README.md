@@ -59,11 +59,11 @@ from pileoffeather import pof, pod
 model = pof.neuralNetwork(layers = [[784,""],[128,"relu"],[10,"sigmoid"]], name = "mnist")
 
 #Upload mnist dataset
-input_dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
-output_dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
+X = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz",start_index = 16, input_number = 784, divide = 255)
+Y = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 
 #Train the neural network using backpropagation
-pof.train(model, input_dataset, output_dataset, batch_size = 12, epoch_number = 2, rate = 1)
+pof.train(model, X, Y, batch_size = 12, epoch_number = 2, rate = 1)
 ```
 
 ---
@@ -129,7 +129,7 @@ dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_na
 #Load training input data of mnist, normalize input from 0 to 1 using divide = 255
 dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
 
-#Load training output data of mnist, use one_hot encoding to convert a decimal number to an array (pass total number of classes as parameter)
+#Load training output data of mnist, use one_hot encoding to convert a decimal number to an array
 #4 -> [0,0,0,0,1,0,0,0,0,0] 0 -> [1,0,0,0,0,0,0,0,0,0]
 dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 
