@@ -77,58 +77,51 @@ Install module
 ```cmd
 pip install pileoffeather
 ```
-Import module
+
 ```python
+#Import module
 from pileoffeather import pof
-```
-Define neural network model, the available activation functions are "sigmoid","relu","leakyRelu"
-```python
+
+#Define neural network model, the available activation functions are "sigmoid","relu","leakyRelu"
 model = pof.neuralNetwork(layers = [[400,""],[50,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
-```
-Save the model
-```python
+
+#Save the model
 model.save()
-```
-Load an exsisting model
-```python
+
+#Load an exsisting model
 model = pof.neuralNetwork(load = "test1")
-```
-Use the neural network
-```python
+
+#Use the neural network
 output = model.run(input)
-```
-Compute backpropagation for a single batch, model.computeBatch(batch_input, batch_output, batch_size, learning_rate)
-```python
+
+#Compute backpropagation for a single batch, model.computeBatch(batch_input, batch_output, batch_size, learning_rate)
+#can be used in a loop passing a batch of data every cycle to train a neural network
 model.computeBatch(batch_input, batch_output, 16, 0.3)
-```
-Method that contains model.computeBatch() in a loop so that it iterates over all the dataset for n epochs
-```python
+
+#Method that contains model.computeBatch() in a loop so that it iterates over all the dataset for n epochs
 pof.train(model, input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
 ```
 
 ## pod.py - data load module
-Import module
+
 ```python
+#Import module
 from pileoffeather import pod
-```
-Load dataset of images from local folder
-```python
+
+#Load dataset of images from local folder
 dataset = pod.load(data_type = "image", color = "grayscale", folder = "folder_name_containing_all_images", resize = (20,20))
-```
-Load dataset from gz file like mnist
-```python
+
 #Load training input data of mnist, normalize input from 0 to 1 using divide = 255
 dataset = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
+
 #Load training output data of mnist, use one_hot encoding to convert a decimal number to an array (pass total number of classes as parameter)
 #4 -> [0,0,0,0,1,0,0,0,0,0] 0 -> [1,0,0,0,0,0,0,0,0,0]
 dataset = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
-```
-Load a single image to feed the neural network loadImage(name, resize, color)
-```python
-input_vector = pod.loadImage("example_image.png", (20,20), "grayscale")
-```
-Convert neural network output to image and save, saveImage(neural_network_output, image_path, resize, color)
-```python
+
+#Load a single image to feed the neural network loadImage(name, resize, color)
+input = pod.loadImage("example_image.png", (20,20), "grayscale")
+
+#Convert neural network output to image and save, saveImage(neural_network_output, image_path, resize, color)
 pod.saveImage(neural_network_output, "image_path_and_name", (20,20), "grayscale")
 ```
 
