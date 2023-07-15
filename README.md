@@ -12,8 +12,6 @@ This library is not an alternative to big ml library like pytorch or tensorflow,
 
 </div>
 
----
-
 Install module
 ```cmd
 pip install pileoffeather
@@ -73,6 +71,25 @@ pof.train(model, input_dataset, output_dataset, batch_size = 12, epoch_number = 
 # Documentation
 The library is structured in 2 files, pof.py (pile of feather) is used to create and train neural networks, pod.py (pile of data) is used import your own data to generate a training dataset.
 ## pof.py - neural network module
+```
+train(model, data_input, data_output, *batch_size, *epoch_number, *rate)
+
+class neuralNetwork
+            |
+            |
+         __init__(*name, *layers, *load) -------- model
+                                                    |
+                                                    |
+                                                  run(input)
+                                                    |
+                                                  load(name)
+                                                    |
+                                                  save()
+                                                    |
+                                                  initializeWeightsAndBiases()
+                                                    |
+                                                  computeBatch(batch_input, batch_output, batch_size, learning_rate)
+```
 Install module
 ```cmd
 pip install pileoffeather
