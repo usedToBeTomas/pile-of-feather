@@ -38,7 +38,7 @@ output = np.concatenate((np.ones(500), np.zeros(500)))
 #Train the neural network using backpropagation
 pof.train(model, input, output, batch_size = 16, epoch_number = 100, rate = 0.6)
 ```
-The second code snippet is testing the neural network on some examples
+Run the trained model
 ```python
 from pileoffeather import pof, pod
 
@@ -48,9 +48,7 @@ model = pof.neuralNetwork(load = "test1")
 #Run model
 input = pod.loadImage("example_image_one.png", (20,20), "grayscale")
 output = model.run(input)
-
-#Print result
-print(round(output[0],3))
+print(output)
 ```
 
 ---
@@ -133,3 +131,11 @@ Convert neural network output to image and save, saveImage(neural_network_output
 ```python
 pod.saveImage(neural_network_output, "image_path_and_name", (20,20), "grayscale")
 ```
+
+---
+
+### TODO
+- Improve pod (pileofdata) with better syntax and more data loading functions
+- Add recurrent neural networks and common architectures like transformer or gan
+- Implement also a training method for those architectures
+- Possibility to live graph loss, accuracy or similar stats during training
