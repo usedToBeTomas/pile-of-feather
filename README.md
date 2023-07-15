@@ -77,7 +77,7 @@ train(model, data_input, data_output, *batch_size, *epoch_number, *rate)
 class neuralNetwork
             |
             |
-         __init__(*name, *layers, *load) -------- model
+         __init__(*name, *layers, *load) -------- object
                                                     |
                                                     |
                                                   run(input)
