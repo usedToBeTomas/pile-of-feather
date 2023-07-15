@@ -76,19 +76,17 @@ train(model, data_input, data_output, *batch_size, *epoch_number, *rate)
 
 class neuralNetwork
             |
+          __init__(*name, *layers, *load)
             |
-         __init__(*name, *layers, *load) -------- object
-                                                    |
-                                                    |
-                                                  run(input)
-                                                    |
-                                                  load(name)
-                                                    |
-                                                  save()
-                                                    |
-                                                  initializeWeightsAndBiases()
-                                                    |
-                                                  computeBatch(batch_input, batch_output, batch_size, learning_rate)
+          run(input)
+            |
+          load(name)
+            |
+          save()
+            |
+          initializeWeightsAndBiases()
+            |
+          computeBatch(batch_input, batch_output, batch_size, learning_rate)
 ```
 Install module
 ```cmd
