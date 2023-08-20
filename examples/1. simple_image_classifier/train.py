@@ -2,7 +2,7 @@ from pileoffeather import pof, pod
 import numpy as np
 
 #Define neural network model
-model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
+model = pof.neuralNetwork(layers = [[400,""],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
 
 #Load the images for the dataset, 500 ones images and 500 zeros images
 ones = pod.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20))
