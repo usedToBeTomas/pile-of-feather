@@ -2,7 +2,7 @@
 <h1>POF - pile of feather</h1>
 <img src="https://github.com/usedToBeTomas/pile-of-feather/blob/main/images/pof.png" width="400" height="400" />
 
-This library is not an alternative to big ml library like pytorch or tensorflow, it lacks features and optimization, such as gpu support. The goal is to create a lightweight library of about 100 lines of code that is easy to use and quick to implement for creating small projects or experiments.
+This library is not an alternative to big ml library like pytorch or tensorflow, it lacks features and optimization, such as gpu support. The goal is to create a lightweight library of about 100 lines of code that is easy to use and quick to implement for creating small projects or experiments. The library is split into 2 files, pof.py (for creating and using nn), pod.py (for loading and converting data).
 
 <h3>
 
@@ -17,13 +17,14 @@ Install module
 pip install pileoffeather
 ```
 # Examples
-1. examples/simple_image_classifier - Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
+## 1. examples/simple_image_classifier
+Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
 ```python
 from pileoffeather import pof, pod
 import numpy as np
 
 #Define neural network model
-model = pof.neuralNetwork(layers = [[400,"input"],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
+model = pof.neuralNetwork(layers = [[400,""],[30,"relu"],[10,"relu"],[1,"sigmoid"]], name = "test1")
 
 #Load the images for the dataset, 500 ones images and 500 zeros images
 ones = pod.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20))
@@ -49,9 +50,8 @@ output = model.run(input)
 print(output)
 ```
 
----
-
-2. examples/mnist - Training script for the full mnist dataset, 2 epochs -> 20~ seconds on 12600k -> 96%+ accuracy on 10k-test dataset
+## 2. examples/mnist
+Training script for the full mnist dataset, 2 epochs -> less than 20 seconds on 12600k -> 96%+ accuracy on 10k-test dataset
 ```python
 from pileoffeather import pof, pod
 
@@ -59,7 +59,7 @@ from pileoffeather import pof, pod
 model = pof.neuralNetwork(layers = [[784,""],[128,"relu"],[10,"sigmoid"]], name = "mnist")
 
 #Upload mnist dataset
-X = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz",start_index = 16, input_number = 784, divide = 255)
+X = pod.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
 Y = pod.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 
 #Train the neural network using backpropagation
@@ -88,10 +88,7 @@ class neuralNetwork
             |
           computeBatch(batch_input, batch_output, batch_size, learning_rate)
 ```
-Install module
-```cmd
-pip install pileoffeather
-```
+
 
 ```python
 #Import module
