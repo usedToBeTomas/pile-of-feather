@@ -17,7 +17,7 @@ Install module
 pip install pileoffeather
 ```
 # Examples
-## 1. examples/simple_image_classifier
+## 1. examples/image_classifier
 Handwritten digit image classifier, dataset is made out of 500 images of ones and 500 images of zeros taken from the mnist dataset. The first code snippet is defining the neural network model, uploading the dataset and than training the model
 ```python
 from pileoffeather import pof, pod
