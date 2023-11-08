@@ -17,7 +17,7 @@ def loadImage(image_path, desired_size, color):
     if color == "grayscale":
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     vectorized_image = image.flatten() / 255.0
-    return vectorized_image
+    return vectorized_image.astype(np.float32)
 
 def merge(data1, data2):
     return np.vstack((data1, data2))

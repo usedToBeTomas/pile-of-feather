@@ -13,4 +13,4 @@ counter = 0
 for i in range(len(X)):
     if np.argmax(model.run(X[i])) == Y[i]:
         counter +=1
-print( str((counter*100)/len(Y)) + "% accuracy")
+print(str((counter*100)/len(Y)) + "% accuracy")
