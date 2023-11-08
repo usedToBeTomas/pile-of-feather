@@ -115,6 +115,12 @@ model.computeBatch(batch_input, batch_output, 16, 0.3)
 
 #Complete backpropagation over all the dataset, uses model.computeBatch in a loop
 pof.train(model, input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
+
+#Pop a layer out of the neural network model (ex. remove layer at index 2)
+model.pop(2)
+
+#Insert a model layers over an other model, training is preserved (ex. at index 2)
+model.insert(model1,2)
 ```
 
 ## pod.py - data load module
