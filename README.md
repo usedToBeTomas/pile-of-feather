@@ -87,6 +87,10 @@ class neuralNetwork
           initializeWeightsAndBiases()
             |
           computeBatch(batch_input, batch_output, batch_size, learning_rate)
+            |
+          pop(index)
+            |
+          insert(model, index)
 ```
 
 
