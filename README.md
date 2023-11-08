@@ -151,5 +151,5 @@ pod.saveImage(neural_network_output, "image_path_and_name", (20,20), "grayscale"
 ### TODO
 - Improve pod (pileofdata) with better syntax and more data loading functions
 - Add recurrent neural networks and common architectures like transformer or gan
-- Implement also a training method for those architectures
+- Implement a training method for those architectures
 - Possibility to live graph loss, accuracy or similar stats during training
