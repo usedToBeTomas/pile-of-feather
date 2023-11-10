@@ -1,6 +1,6 @@
 <div align="center">
 <h1>POF - pile of feather</h1>
-<img src="https://github.com/usedToBeTomas/pile-of-feather/blob/main/images/pof2.png" width="400" height="400" />
+<img src="https://github.com/usedToBeTomas/pile-of-feather/blob/main/images/pof2.jpeg" width="400" height="400" />
 
 Pileoffeather is not an alternative to big ml library like pytorch or tensorflow, it lacks features and optimization, such as gpu support. The goal is to create a lightweight library of about 100 lines of code that is easy to use and quick to implement for creating small projects or experiment with ml.
 
