@@ -1,5 +1,4 @@
-import data_loader
-import nn
+from pileoffeather import nn, data_loader
 import numpy as np
 import time
 
