@@ -7,7 +7,7 @@ with open(os.path.join(directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pileoffeather',
-    version='0.3.2',
+    version='0.4.0',
     license='MIT',
     url = 'https://github.com/usedToBeTomas/pile-of-feather',
     author='Daniele Tomaselli',

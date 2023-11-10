@@ -1,5 +1,5 @@
-import pof
-import pod
+import data_loader
+import nn
 import numpy as np
 import time
 
@@ -11,9 +11,9 @@ def notcorrect():
 
 
 print("__________________________________________START_TEST_______________________________________________")
-print("pof.neuralNetwork()")
+print("nn.create()")
 try:
-    model = pof.neuralNetwork(layers = [[400, 'input'], [30, 'relu'], [10, 'relu'], [1, 'sigmoid']], name = "test1")
+    model = nn.create(layers = [[400, 'input'], [30, 'relu'], [10, 'relu'], [1, 'sigmoid']], name = "test1")
 except Exception as e:
     print(e)
     notcorrect()
@@ -28,10 +28,10 @@ else:
     notcorrect()
 
 print("_____________________________________________")
-print("pod.load()")
+print("dataLoader.load()")
 try:
-    ones = pod.load(data_type = "image", color = "grayscale", folder = "examples\image_classifier\ones", resize = (20,20))
-    zeros = pod.load(data_type = "image", color = "grayscale", folder = "examples\image_classifier\zeros", resize = (20,20))
+    ones = data_loader.load(data_type = "image", color = "grayscale", folder = "..\examples\image_classifier\ones", resize = (20,20))
+    zeros = data_loader.load(data_type = "image", color = "grayscale", folder = "..\examples\image_classifier\zeros", resize = (20,20))
     input = np.vstack((ones, zeros))
     output = np.concatenate((np.ones(500), np.zeros(500)))
 except Exception as e:
@@ -41,10 +41,10 @@ else:
     correct()
 
 print("_____________________________________________")
-print("pof.train() - no errors")
+print("nn.backpropagation() - no errors")
 try:
     st = time.time()
-    pof.train(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
+    nn.backpropagation(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
     et = time.time()
     print("Time = " + str(et - st))
 except Exception as e:
@@ -70,7 +70,7 @@ else:
     correct()
 
 print("_____________________________________________")
-print("pof.train(), model.run() - working correctly")
+print("nn.backpropagation(), model.run() - working correctly")
 try:
     counter = 0
     for i in range(500):
@@ -92,7 +92,7 @@ except Exception as e:
 print("_____________________________________________")
 print("model.pop(), model.insert()")
 try:
-    model1 = pof.neuralNetwork(load = "test1")
+    model1 = nn.load(name = "test1")
     model.pop(2)
     model1.pop(0)
     model1.pop(0)

@@ -1,12 +1,12 @@
-from pileoffeather import pof, pod
+from pileoffeather import nn, data_loader
 import numpy as np
 
 #Define neural network model
-model = pof.neuralNetwork(load = "mnist")
+model = nn.load(name = "mnist")
 
 #Load mnist 10k test dataset
-X = pod.load(data_type = "gz", path = "t10k-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
-Y = pod.load(data_type = "gz", path = "t10k-labels-idx1-ubyte.gz", start_index = 8)
+X = data_loader.load(data_type = "gz", path = "t10k-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
+Y = data_loader.load(data_type = "gz", path = "t10k-labels-idx1-ubyte.gz", start_index = 8)
 
 #Accuracy tester
 counter = 0

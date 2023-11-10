@@ -1,12 +1,11 @@
-from pileoffeather import pof, pod
-import numpy as np
+from pileoffeather import nn, data_loader
 
-#Define neural network model
-model = pof.neuralNetwork(load = "test1")
+#Load neural network model
+model = nn.load(name = "test1")
 
-#Run model
-input = pod.loadImage("example_image_one.png", (20,20), "grayscale")
+#Load example input image
+input = data_loader.loadImage("example_image_one.png", (20,20), "grayscale")
+
+#Run the neural network model
 output = model.run(input)
-
-#Print result
-print(round(output[0],3))
+print(output)
