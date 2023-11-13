@@ -4,11 +4,6 @@
 
 Pileoffeather is not an alternative to big ml library like pytorch or tensorflow, it lacks features and optimization, such as gpu support. The goal is to create a lightweight library of about 100 lines of code that is easy to use and quick to implement for creating small projects or experiment with ml.
 
----
-
-
-Performance estimates -> 96+% accuracy on mnist test dataset after 20 seconds (2 epochs) on i5 12600k
-
 <h3>
 
 [Documentation](https://github.com/usedToBeTomas/pile-of-feather#documentation) | [Examples](https://github.com/usedToBeTomas/pile-of-feather#examples)
