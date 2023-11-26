@@ -1,7 +1,7 @@
 from pileoffeather import nn, data_loader
 
 #Define neural network model
-model = nn.create(name = "mnist", layers = [[784, ""], [144, 'relu'], [10, 'sigmoid']])
+model = nn.create(name = "mnist", layers = [[784, "input"], [144, 'relu'], [10, 'sigmoid']])
 
 #Upload mnist dataset
 input_dataset = data_loader.load(data_type = "gz", path = "train-images-idx3-ubyte.gz", start_index = 16, input_number = 784, divide = 255)
