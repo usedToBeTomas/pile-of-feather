@@ -26,14 +26,15 @@ import numpy as np
 #Create neural network model
 model = nn.create(name = "test1", layers = [[400, 'input'], [30, 'relu'], [10, 'relu'], [1, 'sigmoid']])
 
-#Load and prepare dataset
-ones = data_loader.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20))
-zeros = data_loader.load(data_type = "image", color = "grayscale", folder = "zeros", resize = (20,20))
-input = np.vstack((ones, zeros))
-output = np.concatenate((np.ones(500), np.zeros(500)))
+#Load training dataset
+X = np.vstack((
+  data_loader.load(data_type = "image", color = "grayscale", folder = "ones", resize = (20,20)),
+  data_loader.load(data_type = "image", color = "grayscale", folder = "zeros", resize = (20,20))
+))
+Y = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network and save the model
-nn.mbgd(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
+nn.mbgd(model, X, Y, batch_size = 16, epoch_number = 10, rate = 0.6)
 ```
 This second code snippet is used to run the trained model
 ```python
@@ -47,7 +48,6 @@ input = data_loader.loadImage("example_image_one.png", (20,20), "grayscale")
 
 #Run the neural network model
 output = model.run(input)
-print(output)
 ```
 
 ---
