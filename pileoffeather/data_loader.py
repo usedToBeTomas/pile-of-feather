@@ -26,7 +26,7 @@ def decimal_to_array(decimal_number, n):
 
 def load(**options):
     data_type = options.get("data_type")
-    match data_type:
+    match data_type: 
         case "image":
             folder = options.get("folder")
             resize = options.get("resize")
@@ -50,7 +50,7 @@ def load(**options):
                 for i in range(len(data)):
                     Q.append(decimal_to_array(data[i], int(options.get("one_hot"))))
                 data = np.vstack(Q)
-            return data
+            return data.astype(np.float32)
         case "numbers":
             path = options.get("path")
             with open(path, 'r', encoding='utf-8') as file:

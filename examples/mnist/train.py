@@ -8,4 +8,4 @@ input_dataset = data_loader.load(data_type = "gz", path = "train-images-idx3-uby
 output_dataset = data_loader.load(data_type = "gz", path = "train-labels-idx1-ubyte.gz", start_index = 8, one_hot = 10)
 
 #Train the neural network using backpropagation
-nn.backpropagation(model, input_dataset, output_dataset, batch_size = 16, epoch_number = 2, rate = 1)
+nn.mbgd(model, input_dataset, output_dataset, batch_size = 16, epoch_number = 2, rate = 1)

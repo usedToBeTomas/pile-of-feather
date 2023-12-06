@@ -11,4 +11,4 @@ input = np.vstack((ones, zeros))
 output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network and save the model
-nn.backpropagation(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
+nn.mbgd(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)

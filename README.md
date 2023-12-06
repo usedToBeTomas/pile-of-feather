@@ -33,7 +33,7 @@ input = np.vstack((ones, zeros))
 output = np.concatenate((np.ones(500), np.zeros(500)))
 
 #Train the neural network and save the model
-nn.backpropagation(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
+nn.mbgd(model, input, output, batch_size = 16, epoch_number = 10, rate = 0.6)
 ```
 This second code snippet is used to run the trained model
 ```python
@@ -66,8 +66,8 @@ model = nn.create(name = "test1", layers = [[400,""],[50,"relu"],[10,"relu"],[1,
 #Load an exsisting model
 model = nn.load(name = "test1")
 
-#Complete backpropagation over all the dataset, uses model.computeBatch in a loop
-nn.backpropagation(model, input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
+#Mini-batch gradient descent, parallel backprop execution on each run of the mini-batch
+nn.mbgd(model, input_matrix, output_matrix, batch_size = 16, epoch_number = 100, rate = 0.03)
 
 #Save the model
 model.save()
@@ -111,7 +111,6 @@ data_loader.saveImage(neural_network_output, "image_path_and_name", (20,20), "gr
 ---
 
 ### TODO
-- Improve pod (pileofdata) with better syntax and more data loading functions
+- Add audio support on data_loader.py
 - Add recurrent neural networks and common architectures like transformer or gan
-- Implement a training method for those architectures
 - Possibility to live graph loss, accuracy or similar stats during training

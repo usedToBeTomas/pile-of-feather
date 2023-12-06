@@ -2,20 +2,18 @@ from . import engine
 from concurrent.futures import ThreadPoolExecutor
 
 def create(**options):
-    model = engine.neuralNetworkModel()
-    model.name = options.get("name")
+    model = engine.neuralNetworkModel(options.get("name"))
     model.layers = options.get("layers")
     model._init_weights()
     return model
 
 def load(**options):
-    model = engine.neuralNetworkModel()
-    model.name = options.get("name")
+    model = engine.neuralNetworkModel(options.get("name"))
     model.load()
     return model
 
-#Main backprop function with multithread support
-def backpropagation(model, data_input, data_output, **options):
+#Main backprop function with multithread support mini batch gradient descent
+def mbgd(model, data_input, data_output, **options):
 
     #Get function parameters
     batch_size, epoch_number, learning_rate = options.get("batch_size"), options.get("epoch_number"), options.get("rate")
@@ -31,7 +29,8 @@ def backpropagation(model, data_input, data_output, **options):
 
         #Loop over the entire dataset, n-time where n is len(data)/batch_size, so an iteration for each batch
         for batch_start in range(0, len(data_input), batch_size): #batch_start is the index of the start of the batch
-            batch_end =  min(batch_start + batch_size,len(data_input)) #define index of the end of the batch
+            batch_end =  min(batch_start + batch_size,len(data_input)) #batch_end is the index of the end of the batch
+            model._init_batch() #Call init_batch() before running the backprop, initializes the space to store weights and biases modifications
 
             #Multithread each single run and backpropagation of a batch
             with ThreadPoolExecutor(max_workers=batch_size) as executor:
