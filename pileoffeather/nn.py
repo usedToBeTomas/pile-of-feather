@@ -38,7 +38,7 @@ def backpropagation(model, data_input, data_output, **options):
                 for i in range(batch_start, batch_end): #Loop over each single input inside a batch
                     executor.submit(_backpropagate_batch, model, data_input[i], data_output[i], i-batch_start) #Call _backpropagate_batch() for each thread
 
-            #extract the median loss of the batch (not real median for speed optimization)
+            #extract the average loss of the batch (simulated average for speed optimization)
             loss += model.loss
             #Update weights and biases of the model based on the backpropagation
             model._update_weights(batch_size, learning_rate)
